@@ -7,7 +7,7 @@ Simple sample code for testing android UI and activity transitions.
    
    
    
-   ##License
+   **License**
    Copyright 2017 Talha Hasan Zia
 
    Licensed under the Apache License, Version 2.0 (the "License");
