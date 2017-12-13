@@ -12,6 +12,8 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.replaceText;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.ComponentNameMatchers.hasShortClassName;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
@@ -48,6 +50,10 @@ public class MainActivityTest
     @Test
     public void onClick() throws Exception
     {
+        /*
+         * This will fail since edit text will not have right text
+         */
+
         // Clicks a button to send the message to another
         // activity through an explicit intent.
         onView(withId(R.id.next_activity_button)).perform(click());
@@ -58,6 +64,59 @@ public class MainActivityTest
                 hasComponent(hasShortClassName(".Main2Activity")),
                 toPackage("com.android.example.testsample")));
 
+
+
+
     }
+
+    @Test
+    public void onClickWithWrongInputText() throws Exception
+    {
+        /*
+         * This will fail since edit text will not have right text
+         */
+
+        onView(withId(R.id.editText)).perform(click(), typeText("Engineer"));
+        // Clicks a button to send the message to another
+        // activity through an explicit intent.
+        onView(withId(R.id.next_activity_button)).perform(click());
+
+        // Verifies that the Main2Activity received an intent
+        // with the correct package name and message.
+        intended(allOf(
+                hasComponent(hasShortClassName(".Main2Activity")),
+                toPackage("com.android.example.testsample")));
+
+
+
+
+    }
+
+
+    @Test
+    public void onClickWithRightInputText() throws Exception
+    {
+        /*
+         * This should pass since edit text will have right text
+         */
+
+
+        onView(withId(R.id.editText)).perform(click(), replaceText("")); // clear edittext
+        onView(withId(R.id.editText)).perform(click(), typeText("magic word")); // enter right word
+        // Clicks a button to send the message to another
+        // activity through an explicit intent.
+        onView(withId(R.id.next_activity_button)).perform(click());
+
+        // Verifies that the Main2Activity received an intent
+        // with the correct package name and message.
+        intended(allOf(
+                hasComponent(hasShortClassName(".Main2Activity")),
+                toPackage("com.android.example.testsample")));
+
+
+
+
+    }
+
 
 }
