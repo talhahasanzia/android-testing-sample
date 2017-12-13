@@ -3,6 +3,8 @@ Testing android sample app with JUnit and Espresso using Hamcrest Matchers
 
 Simple sample code for testing android UI and activity transitions.
 
+See code comments for detailed explanation of what is happening.
+
 
    
    
