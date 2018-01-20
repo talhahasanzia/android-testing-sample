@@ -7,7 +7,7 @@ See code comments for detailed explanation of what is happening in [Andoid Test 
 
 
    
-   
+   ## [Jump to test source file](https://github.com/talhahasanzia/android-testing-sample/tree/master/TestSample/app/src/androidTest/java/com/android/example/testsample)
    
    ## **License**
    
